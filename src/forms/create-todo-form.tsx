@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { useMutation } from '@apollo/client'
 import { useSnackbar } from 'notistack'
+import { Field } from 'react-final-form'
 
 import { useModal } from 'context'
 import { CREATE_TODO_MUTATION } from 'apollo'
 import { Form, Button, TextField } from 'components'
 import { todoValidation } from 'validations'
-import { Field } from 'react-final-form'
 
 const CreateTodoForm: FC = () => {
   const { enqueueSnackbar } = useSnackbar()

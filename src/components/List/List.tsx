@@ -8,23 +8,24 @@ interface ListProps {
   title: string
   items: ITodo[]
   color?: string
-  withAdd?: boolean
+  isTodo?: boolean
   handleAddTodo?: () => void
+  handleToDone?: any
 }
 
-const List: FC<ListProps> = ({ children, handleAddTodo, ...props }) => {
-  const { title = '', items = [], color = '', withAdd = false } = props
+const List: FC<ListProps> = ({ handleAddTodo, handleToDone, ...props }) => {
+  const { title = '', items = [], color = '', isTodo = false } = props
 
-  const elements = items.map(({ id, title, description }: ITodo) => (
-    <ListItem key={id} color={color} title={title} description={description} />
+  const elements = items.map((todo: ITodo) => (
+    <ListItem key={todo?.id} handleToDone={handleToDone} isTodo={isTodo} color={color} {...todo} />
   ))
 
   return (
     <SList>
       <h1>{title}</h1>
       <div>
-        <ul>{elements}</ul>
-        {withAdd && (
+        <ul>{elements.length ? elements : <p>Empty...</p>}</ul>
+        {isTodo && (
           <div>
             <button onClick={handleAddTodo}>
               <ControlPointIcon />

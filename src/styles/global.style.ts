@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: TodoTheme }>`
 
   *::-webkit-scrollbar {
     width: 0px;
+    height: 0px;
     background-color: ${({ theme }) => theme?.colors(0.3)?.secondary};
   }
   *::-webkit-scrollbar-thumb {

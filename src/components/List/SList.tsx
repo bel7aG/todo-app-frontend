@@ -6,7 +6,7 @@ export const SList = styled.div`
   flex-direction: column;
   padding: 0.4rem;
   max-width: 32rem;
-  width: 100%;
+  width: 50%;
 
   > h1 {
     line-height: 3rem;

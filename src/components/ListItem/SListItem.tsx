@@ -12,8 +12,19 @@ export const SListItem = styled.li<{ color?: string }>`
     color: ${({ theme }) => theme?.layout?.colors?.textOpposite};
   }
   > h2 {
+    display: flex;
+    justify-content: space-between;
     font-weight: 500;
     margin-bottom: 1rem;
+
+    > span:not(:first-child) {
+      cursor: pointer;
+      border-radius: ${({ theme }) => theme?.border?.radius};
+      background-color: #ff9800;
+      padding: 4px;
+      font-size: 1.4rem;
+      color: ${({ theme }) => theme?.layout?.colors?.textOpposite};
+    }
   }
 
   > p {

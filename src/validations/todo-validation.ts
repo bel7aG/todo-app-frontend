@@ -5,7 +5,7 @@ export const todoValidation = (formValues: any) => {
 
   const errors: any = {}
 
-  const requiredFields = ['title']
+  const requiredFields = ['title', 'description']
 
   requiredFields.forEach((field) => {
     if (!formValues[`${field}`]) {

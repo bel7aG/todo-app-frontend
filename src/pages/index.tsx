@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import { NextPage } from 'next'
 import { useSnackbar } from 'notistack'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery, Reference } from '@apollo/client'
 
 import { useModal } from 'context'
 import { Head } from 'shared'
-import { FETCH_TODOS_QUERY } from 'apollo'
+import { FETCH_TODOS_QUERY, UPDATE_TODO_STATUS_MUTATION } from 'apollo'
 import { List, Modal, Skeleton } from 'components'
 import { STodoPage } from 'styles'
 import { ITodo } from 'interfaces'
@@ -17,13 +17,35 @@ const Home: NextPage = () => {
   const { pickedForm, handleModal } = useModal()
 
   const { data = [], loading } = useQuery(FETCH_TODOS_QUERY, {
-    pollInterval: 3500,
+    // pollInterval: 3500,
     onError: () => {
       enqueueSnackbar('Connection problem', {
         variant: 'error'
       })
     },
     partialRefetch: true
+  })
+
+  const [updateStatus] = useMutation(UPDATE_TODO_STATUS_MUTATION, {
+    onCompleted: () => {
+      handleModal(false)
+      enqueueSnackbar('moved successfully')
+    },
+
+    update: (cache, { data: { updateStatus: newTodo } }) => {
+      cache.modify({
+        fields: {
+          todos(existingTodos = [], { readField }) {
+            return [...existingTodos.filter((spaceRef: Reference) => newTodo.id !== readField('id', spaceRef)), newTodo]
+          }
+        }
+      })
+    },
+    onError: ({ message }) => {
+      enqueueSnackbar(message, {
+        variant: 'error'
+      })
+    }
   })
 
   const todoColumn = useMemo(() => data?.todos?.filter(({ status }: ITodo) => status === 'TODO') || [], [data])
@@ -37,6 +59,12 @@ const Home: NextPage = () => {
     return <CreateTodoForm />
   }
 
+  const handleToDone = (id: string) => {
+    updateStatus({
+      variables: { id, status: 'DONE' }
+    })
+  }
+
   return (
     <>
       <Head pageTitle="HOME" />
@@ -46,7 +74,7 @@ const Home: NextPage = () => {
       <Skeleton tag="div" loading={loading} className="page">
         <STodoPage>
           <div>
-            <List title="todo" items={todoColumn} withAdd handleAddTodo={handleAddTodo} />
+            <List title="todo" items={todoColumn} isTodo handleAddTodo={handleAddTodo} handleToDone={handleToDone} />
             <List title="done" color="#22df70" items={doneColumn} />
           </div>
         </STodoPage>
