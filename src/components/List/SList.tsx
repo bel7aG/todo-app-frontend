@@ -25,10 +25,18 @@ export const SList = styled.div`
     overflow-y: hidden;
 
     > ul {
+      * {
+        overflow-anchor: none;
+      }
       padding: 4rem 1rem;
       max-height: calc(100vh - 16.5rem);
       overflow-y: auto;
       overflow-x: hidden;
+
+      > li:last-child {
+        height: 1px;
+        overflow-anchor: auto;
+      }
     }
 
     > div:last-child {

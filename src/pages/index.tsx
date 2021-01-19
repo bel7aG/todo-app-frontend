@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const { pickedForm, handleModal } = useModal()
 
   const { data = [], loading } = useQuery(FETCH_TODOS_QUERY, {
-    // pollInterval: 3500,
+    pollInterval: 3500,
     onError: () => {
       enqueueSnackbar('Connection problem', {
         variant: 'error'

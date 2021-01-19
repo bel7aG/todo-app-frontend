@@ -24,7 +24,10 @@ const List: FC<ListProps> = ({ handleAddTodo, handleToDone, ...props }) => {
     <SList>
       <h1>{title}</h1>
       <div>
-        <ul>{elements.length ? elements : <p>Empty...</p>}</ul>
+        <ul>
+          {elements.length ? elements : <li>Empty...</li>}
+          <li />
+        </ul>
         {isTodo && (
           <div>
             <button onClick={handleAddTodo}>
