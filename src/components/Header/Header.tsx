@@ -7,7 +7,7 @@ const Header: FC = () => {
   return (
     <SHeader>
       <Link href="/">
-        <a>todo</a>
+        <a>todoapp</a>
       </Link>
     </SHeader>
   )

@@ -1,15 +1,16 @@
 import { useMemo } from 'react'
 import { NextPage } from 'next'
 import { useSnackbar } from 'notistack'
+import { useQuery } from '@apollo/client'
 
-import { FETCH_TODOS_QUERY } from 'apollo'
+import { useModal } from 'context'
 import { Head } from 'shared'
+import { FETCH_TODOS_QUERY } from 'apollo'
 import { List, Modal, Skeleton } from 'components'
 import { STodoPage } from 'styles'
-import { useQuery } from '@apollo/client'
 import { ITodo } from 'interfaces'
-import { useModal } from 'context'
 import { CREATE_TODO_FORM } from 'types'
+import { CreateTodoForm } from 'forms'
 
 const Home: NextPage = () => {
   const { enqueueSnackbar } = useSnackbar()
@@ -33,7 +34,7 @@ const Home: NextPage = () => {
   }
 
   const renderPickedForm = () => {
-    return null
+    return <CreateTodoForm />
   }
 
   return (

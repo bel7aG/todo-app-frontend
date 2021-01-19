@@ -16,6 +16,10 @@ export const SListItem = styled.li<{ color?: string }>`
     margin-bottom: 1rem;
   }
 
+  > p {
+    white-space: pre;
+  }
+
   opacity: 0.9;
   transition: opacity 0.2s ${({ theme }) => theme?.transition};
 

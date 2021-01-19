@@ -28,6 +28,7 @@ export const SList = styled.div`
       padding: 4rem 1rem;
       max-height: calc(100vh - 16.5rem);
       overflow-y: auto;
+      overflow-x: hidden;
     }
 
     > div:last-child {

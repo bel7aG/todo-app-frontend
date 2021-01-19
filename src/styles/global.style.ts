@@ -130,7 +130,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: TodoTheme }>`
   a:visited,
   a:link {
     text-decoration: none;
-    color: inherit;
   }
 
   .page {
