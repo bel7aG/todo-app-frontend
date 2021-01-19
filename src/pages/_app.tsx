@@ -4,8 +4,9 @@ import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider as StyledThemeProvider, TodoTheme } from 'styled-components'
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/styles'
 import { SnackbarProvider, SnackbarOrigin } from 'notistack'
-import { useApollo } from 'apollo'
+import { CSSPlugin } from 'gsap'
 
+import { useApollo } from 'apollo'
 import Layout from 'components'
 import { GlobalStyle } from 'styles'
 import AppProviders from 'context'
@@ -15,6 +16,8 @@ const snackbarOrigin: SnackbarOrigin = {
   vertical: `bottom`,
   horizontal: `center`
 }
+
+;[CSSPlugin]
 
 export function reportWebVitals(metric: any) {
   // The metric object ({ id, name, startTime, value, label }) is logged to the console
