@@ -24,6 +24,12 @@ declare module 'styled-components' {
       }
     }
 
+    modal: {
+      colors: {
+        background: string
+      }
+    }
+
     transition: string
   }
 }

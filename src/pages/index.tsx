@@ -4,13 +4,16 @@ import { useSnackbar } from 'notistack'
 
 import { FETCH_TODOS_QUERY } from 'apollo'
 import { Head } from 'shared'
-import { List } from 'components'
+import { List, Modal } from 'components'
 import { STodoPage } from 'styles'
 import { useQuery } from '@apollo/client'
 import { ITodo } from 'interfaces'
+import { useModal } from 'context'
+import { CREATE_TODO_FORM } from 'types'
 
 const Home: NextPage = () => {
   const { enqueueSnackbar } = useSnackbar()
+  const { pickedForm, handleModal } = useModal()
 
   const { data = [] } = useQuery(FETCH_TODOS_QUERY, {
     pollInterval: 3500,
@@ -19,22 +22,29 @@ const Home: NextPage = () => {
         variant: 'error'
       })
     },
-    onCompleted: (a) => {
-      console.log(a)
-      alert('ok')
-    },
     partialRefetch: true
   })
 
   const todoColumn = useMemo(() => data?.todos?.filter(({ status }: ITodo) => status === 'TODO') || [], [data])
   const doneColumn = useMemo(() => data?.todos?.filter(({ status }: ITodo) => status === 'DONE') || [], [data])
 
+  const handleAddTodo = () => {
+    handleModal(true, CREATE_TODO_FORM)
+  }
+
+  const renderPickedForm = () => {
+    return null
+  }
+
   return (
     <>
       <Head pageTitle="HOME" />
+
+      <Modal title={pickedForm.title || ''}>{renderPickedForm()}</Modal>
+
       <STodoPage>
         <div>
-          <List title="todo" items={todoColumn} withAdd />
+          <List title="todo" items={todoColumn} withAdd handleAddTodo={handleAddTodo} />
           <List title="done" color="#22df70" items={doneColumn} />
         </div>
       </STodoPage>

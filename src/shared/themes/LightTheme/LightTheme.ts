@@ -8,8 +8,8 @@ export const LightTheme: TodoTheme = {
   },
 
   colors: (opacity: number = 1) => ({
-    primary: `rgba(3, 155, 229, ${opacity})`, //cyan
-    secondary: `rgba(84, 89, 95, ${opacity})` // green
+    primary: `rgba(3, 155, 229, ${opacity})`,
+    secondary: `rgba(84, 89, 95, ${opacity})`
   }),
 
   layout: {
@@ -18,6 +18,12 @@ export const LightTheme: TodoTheme = {
       header: '#ffffff',
       text: '#272224',
       textOpposite: '#ffffff'
+    }
+  },
+
+  modal: {
+    colors: {
+      background: '#fdfdfd'
     }
   },
 

@@ -8,16 +8,22 @@ export const DarkTheme: TodoTheme = {
   },
 
   colors: (opacity: number = 1) => ({
-    primary: `rgba(110, 193, 228, ${opacity})`, //cyan
-    secondary: `rgba(84, 89, 95, ${opacity})` // green
+    primary: `rgba(3, 155, 229, ${opacity})`,
+    secondary: `rgba(84, 89, 95, ${opacity})`
   }),
 
   layout: {
     colors: {
       body: '#272726',
       header: '#161616',
-      text: '#05386B',
-      textOpposite: '#ffffff'
+      text: '#fffff',
+      textOpposite: '#242424'
+    }
+  },
+
+  modal: {
+    colors: {
+      background: '#181818'
     }
   },
 

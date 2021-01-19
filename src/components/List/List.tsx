@@ -6,16 +6,17 @@ import { SList } from './SList'
 
 interface ListProps {
   title: string
-  items: ITodo | any
+  items: ITodo[]
   color?: string
   withAdd?: boolean
+  handleAddTodo?: () => void
 }
 
-const List: FC<ListProps> = ({ children, ...props }) => {
+const List: FC<ListProps> = ({ children, handleAddTodo, ...props }) => {
   const { title = '', items = [], color = '', withAdd = false } = props
 
-  const elements = items.map(({ title, description }: ITodo) => (
-    <ListItem color={color} title={title} description={description} />
+  const elements = items.map(({ id, title, description }: ITodo) => (
+    <ListItem key={id} color={color} title={title} description={description} />
   ))
 
   return (
@@ -25,7 +26,7 @@ const List: FC<ListProps> = ({ children, ...props }) => {
         <ul>{elements}</ul>
         {withAdd && (
           <div>
-            <button>
+            <button onClick={handleAddTodo}>
               <ControlPointIcon />
               <span>Add new Todo</span>
             </button>
