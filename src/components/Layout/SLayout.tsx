@@ -6,7 +6,6 @@ export const SLayout = styled.div`
   min-width: 28rem;
 
   > main {
-    padding: 0 1rem;
     min-height: 100vh;
   }
 `
