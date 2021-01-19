@@ -64,6 +64,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: TodoTheme }>`
     background-color: transparent;
     outline: none;
     border: 0;
+    cursor: pointer;
   }
 
   input {

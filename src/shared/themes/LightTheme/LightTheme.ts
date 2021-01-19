@@ -8,7 +8,7 @@ export const LightTheme: TodoTheme = {
   },
 
   colors: (opacity: number = 1) => ({
-    primary: `rgba(110, 193, 228, ${opacity})`, //cyan
+    primary: `rgba(3, 155, 229, ${opacity})`, //cyan
     secondary: `rgba(84, 89, 95, ${opacity})` // green
   }),
 
