@@ -18,6 +18,7 @@ declare module 'styled-components' {
     layout: {
       colors: {
         body: string
+        header: string
         text: string
         textOpposite: string
       }

@@ -2,6 +2,7 @@ import { useEffect, useRef, memo, FC, ReactNode, RefObject } from 'react'
 import { TodoTheme } from 'styled-components'
 
 import { useTheme } from 'context'
+import { Header } from 'components'
 import { SLayout } from './SLayout'
 
 export interface LayoutProps {
@@ -20,6 +21,7 @@ const Layout: FC<LayoutProps> = ({ children, triggerTheme }) => {
 
   return (
     <SLayout ref={layoutRef}>
+      <Header />
       <main>{children}</main>
     </SLayout>
   )

@@ -2,8 +2,8 @@ import { TodoTheme } from 'styled-components'
 
 export const LightTheme: TodoTheme = {
   border: {
-    wsc: `1px solid #6EC1E4`,
-    color: '#6EC1E4',
+    wsc: `1px solid #dbdbdb`,
+    color: '#dbdbdb',
     radius: '4px'
   },
 
@@ -14,7 +14,8 @@ export const LightTheme: TodoTheme = {
 
   layout: {
     colors: {
-      body: '#ffffff',
+      body: '#fafafa',
+      header: '#ffffff',
       text: '#272224',
       textOpposite: '#ffffff'
     }

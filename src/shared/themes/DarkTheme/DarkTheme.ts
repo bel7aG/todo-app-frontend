@@ -15,6 +15,7 @@ export const DarkTheme: TodoTheme = {
   layout: {
     colors: {
       body: '#272726',
+      header: '#161616',
       text: '#05386B',
       textOpposite: '#ffffff'
     }
