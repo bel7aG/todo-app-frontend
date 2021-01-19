@@ -75,7 +75,7 @@ const Home: NextPage = () => {
         <STodoPage>
           <div>
             <List title="todo" items={todoColumn} isTodo handleAddTodo={handleAddTodo} handleToDone={handleToDone} />
-            <List title="done" color="#22df70" items={doneColumn} />
+            <List title="done" color="#00a92c" items={doneColumn} />
           </div>
         </STodoPage>
       </Skeleton>
