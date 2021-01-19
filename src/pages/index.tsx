@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack'
 
 import { FETCH_TODOS_QUERY } from 'apollo'
 import { Head } from 'shared'
-import { List, Modal } from 'components'
+import { List, Modal, Skeleton } from 'components'
 import { STodoPage } from 'styles'
 import { useQuery } from '@apollo/client'
 import { ITodo } from 'interfaces'
@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   const { enqueueSnackbar } = useSnackbar()
   const { pickedForm, handleModal } = useModal()
 
-  const { data = [] } = useQuery(FETCH_TODOS_QUERY, {
+  const { data = [], loading } = useQuery(FETCH_TODOS_QUERY, {
     pollInterval: 3500,
     onError: () => {
       enqueueSnackbar('Connection problem', {
@@ -42,12 +42,14 @@ const Home: NextPage = () => {
 
       <Modal title={pickedForm.title || ''}>{renderPickedForm()}</Modal>
 
-      <STodoPage>
-        <div>
-          <List title="todo" items={todoColumn} withAdd handleAddTodo={handleAddTodo} />
-          <List title="done" color="#22df70" items={doneColumn} />
-        </div>
-      </STodoPage>
+      <Skeleton tag="div" loading={loading} className="page">
+        <STodoPage>
+          <div>
+            <List title="todo" items={todoColumn} withAdd handleAddTodo={handleAddTodo} />
+            <List title="done" color="#22df70" items={doneColumn} />
+          </div>
+        </STodoPage>
+      </Skeleton>
     </>
   )
 }

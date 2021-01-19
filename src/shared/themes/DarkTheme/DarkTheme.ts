@@ -27,6 +27,10 @@ export const DarkTheme: TodoTheme = {
     }
   },
 
+  skeleton: {
+    background: 'linear-gradient(270deg, #232323 0%, #242424 20%, #222222 40%, #222222 100%);'
+  },
+
   transition: 'cubic-bezier(0.73, 0.12, 0.24, 0.99)'
 }
 

@@ -27,6 +27,10 @@ export const LightTheme: TodoTheme = {
     }
   },
 
+  skeleton: {
+    background: 'linear-gradient(270deg, #fafafa, #eaeaea, #eaeaea, #fafafa)'
+  },
+
   transition: 'cubic-bezier(0.73, 0.12, 0.24, 0.99)'
 }
 

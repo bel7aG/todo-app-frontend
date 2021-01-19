@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: TodoTheme }>`
 
 
   body {
+    background: ${({ theme }) => theme?.layout?.colors?.body};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
     margin: 0;
@@ -130,5 +131,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: TodoTheme }>`
   a:link {
     text-decoration: none;
     color: inherit;
+  }
+
+  .page {
+    min-height: calc(100vh - 6rem);
   }
 `

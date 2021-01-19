@@ -30,6 +30,10 @@ declare module 'styled-components' {
       }
     }
 
+    skeleton: {
+      background: string
+    }
+
     transition: string
   }
 }
